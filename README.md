@@ -16,21 +16,24 @@ IAMX DID is a URI conforming to [IETF RFC 3986](https://www.ietf.org/rfc/rfc3986
 
 IAMX DID is generated in conformity with [W3C DIDs specification](https://www.w3.org/TR/did-core/).
 
-IAMX iamx-specific-idstring(UID) is conform to [IETF RFC 4122](https://www.ietf.org/rfc/rfc4122.txt)
+IAMX LEDGER is a alphanumeric string
+
+IAMX UID (specific-idstring) is conform to [IETF RFC 4122](https://www.ietf.org/rfc/rfc4122.txt)
 
 The ABNF grammar used to generate the IAMX DID identifier is as follows:
 
 ```
-iamx-did   = "did:iamx:" iamx-specific-idstring
-iamx-specific-idstring = xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx 
+iamx-did   = did:iamx: ledger : specific-idstring
+ledger = ledger identifyer
+specific-idstring = xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx 
 ```
 
-`did:iamx:` denotes that iamx DIDs are decentralized identifiers conforming to [W3C DIDs specification](https://www.w3.org/TR/did-core/), and are registered on the Cardano blockchain.
+`did:iamx:cardano:` denotes that iamx DIDs are decentralized identifiers conforming to [W3C DIDs specification](https://www.w3.org/TR/did-core/), and are registered on the Cardano blockchain.
 
 Below is an example of a iamx DID:
 
 ```
-did:iamx:d36d6f76-e463-4e48-a97e-908edaee6453
+did:iamx:cardano:d36d6f76-e463-4e48-a97e-908edaee6453
 ```
 
 ## iamx DID Registration and Deactivation
@@ -52,7 +55,7 @@ Below is the basic structure of the iamx DID Document:
    "context":[
       "https://www.w3.org/ns/did/v1"
    ],
-   "id":"did:iamx:d36d6f76-e463-4e48-a97e-908edaee6453",
+   "id":"did:iamx:cardano:d36d6f76-e463-4e48-a97e-908edaee6453",
    "authentication":{
       "id":"",
       "type":"",
@@ -88,7 +91,7 @@ The value of `id` **MUST** be a valid iamx DID. A iamx DID **MUST** have exactly
 
 ```json
 {
-  "id": "did:iamx:d36d6f76-e463-4e48-a97e-908edaee6453"
+  "id": "did:iamx:cardano:d36d6f76-e463-4e48-a97e-908edaee6453"
 }
 ```
 
@@ -116,15 +119,15 @@ Below is a specific example of the `publicKey` property:
 {
   "publicKey": [
 	{
-	  "id": "did:iamx:d36d6f76-e463-4e48-a97e-908edaee6453#keys-1",
+	  "id": "did:iamx:cardano:d36d6f76-e463-4e48-a97e-908edaee6453#keys-1",
 	  "type": "BIP32-Ed25519",
-	  "controller": "did:iamx:d36d6f76-e463-4e48-a97e-908edaee6453",
+	  "controller": "did:iamx:cardano:d36d6f76-e463-4e48-a97e-908edaee6453",
 	  "publicKeyHex": "0xfbf38de9fb40edcdab412094d24fa39a314f3d3f52f5860e2509c32522eda30161fe70dfc9f90434d64bd976ede4f112d4f2d8e34d28fe48281663219d2ddac6"
 	},
 	{
-	  "id": "did:iamx:d36d6f76-e463-4e48-a97e-908edaee6453#keys-1",
+	  "id": "did:iamx:cardano:d36d6f76-e463-4e48-a97e-908edaee6453#keys-1",
 	  "type": "BIP32-Ed25519",
-	  "controller": "did:iamx:d36d6f76-e463-4e48-a97e-908edaee6453",
+	  "controller": "did:iamx:cardano:d36d6f76-e463-4e48-a97e-908edaee6453",
 	  "AdaAddress": "addr1qxjq9aj8hy29jkp9dxeepe88ksayl4kqw7qe8et33j6ucxmj2ldj3f0f2l3xrk8ep7hwvde3wa8l9w4wkp8wxfshta2sya6pxt"
 	}
   ]
@@ -145,11 +148,11 @@ Below is an example which refers to authentication keys in the two way specified
 {
   ...
   "authentication": [
-	"did:iamx:d36d6f76-e463-4e48-a97e-908edaee6453#keys-1",
+	"did:iamx:cardano:d36d6f76-e463-4e48-a97e-908edaee6453#keys-1",
 	{
-	  "id": "did:iamx:d36d6f76-e463-4e48-a97e-908edaee6453#keys-2",
+	  "id": "did:iamx:cardano:d36d6f76-e463-4e48-a97e-908edaee6453#keys-2",
 	  "type": "BIP32-Ed25519",
-	  "controller": "did:iamx:d36d6f76-e463-4e48-a97e-908edaee6453",
+	  "controller": "did:iamx:cardano:d36d6f76-e463-4e48-a97e-908edaee6453",
 	  "publicKeyHex": "03a835599850544b4c0a222d594be5d59cf298f5a3fd90bff1c8caa064523745f3"
 	}
   ],
@@ -168,15 +171,15 @@ It is worth noting that a iamx DID Document can assign `controller` without defi
 
 The iamx DID Document of the delegate **SHOULD** have a `authentication` property.
 
-Below is a specific example representing that either `did:iamx:5Ee76017be7F983a520a778B413758A9DB49cBe9` or `did:iamx:9861eE37Ede3dCab070DF227155D86A7438d8Ed2` can act as a delegate of `did:iamx:d36d6f76-e463-4e48-a97e-908edaee6453`:
+Below is a specific example representing that either `did:iamx:cardano:5Ee76017be7F983a520a778B413758A9DB49cBe9` or `did:iamx:cardano:9861eE37Ede3dCab070DF227155D86A7438d8Ed2` can act as a delegate of `did:iamx:cardano:d36d6f76-e463-4e48-a97e-908edaee6453`:
 
 ```json
 {
   ...
-  "id": "did:iamx:d36d6f76-e463-4e48-a97e-908edaee6453",
+  "id": "did:iamx:cardano:d36d6f76-e463-4e48-a97e-908edaee6453",
   "controller": [
-	  "did:iamx:5Ee76017be7F983a520a778B413758A9DB49cBe9",
-	  "did:iamx:9861eE37Ede3dCab070DF227155D86A7438d8Ed2"
+	  "did:iamx:cardano:5Ee76017be7F983a520a778B413758A9DB49cBe9",
+	  "did:iamx:cardano:9861eE37Ede3dCab070DF227155D86A7438d8Ed2"
   ],
 }
 ```
@@ -196,7 +199,7 @@ Below is a specific example:
   ...
   "service": [
 	{
-	  "id": "did:iamx:d36d6f76-e463-4e48-a97e-908edaee6453#some-service",
+	  "id": "did:iamx:cardano:d36d6f76-e463-4e48-a97e-908edaee6453#some-service",
 	  "type": "SomeServiceType",
 	  "serviceEndpoint": "Some URL"
 	}
@@ -232,37 +235,37 @@ A simple example of a iamx DID Document is as follows:
       "https://www.w3.org/ns/did/v1",
       "https://w3id.org/security/suites/ed25519-2020/v1"
    ],
-   "id":"did:iamx:d36d6f76-e463-4e48-a97e-908edaee6453",
+   "id":"did:iamx:cardano:d36d6f76-e463-4e48-a97e-908edaee6453",
    "updated": "2019-06-30T12:00:00Z",
    "authentication":[
-      "did:iamx:d36d6f76-e463-4e48-a97e-908edaee6453#keys-1",
+      "did:iamx:cardano:d36d6f76-e463-4e48-a97e-908edaee6453#keys-1",
       {
-         "id":"did:iamx:d36d6f76-e463-4e48-a97e-908edaee6453#keys-2",
+         "id":"did:iamx:cardano:d36d6f76-e463-4e48-a97e-908edaee6453#keys-2",
          "type":"BIP32-Ed25519",
          "controller":[
-            "did:iamx:5Ee76017be7F983a520a778B413758A9DB49cBe9",
-            "did:iamx:9861eE37Ede3dCab070DF227155D86A7438d8Ed2"
+            "did:iamx:cardano:5Ee76017be7F983a520a778B413758A9DB49cBe9",
+            "did:iamx:cardano:9861eE37Ede3dCab070DF227155D86A7438d8Ed2"
          ],
          "publicKeyHex":"03a835599850544b4c0a222d594be5d59cf298f5a3fd90bff1c8caa064523745f3"
       }
    ],
    "publicKey":[
       {
-         "id":"did:iamx:d36d6f76-e463-4e48-a97e-908edaee6453#keys-1",
+         "id":"did:iamx:cardano:d36d6f76-e463-4e48-a97e-908edaee6453#keys-1",
          "type":"BIP32-Ed25519",
-         "controller":"did:iamx:d36d6f76-e463-4e48-a97e-908edaee6453",
+         "controller":"did:iamx:cardano:d36d6f76-e463-4e48-a97e-908edaee6453",
          "publicKeyHex":"0xfbf38de9fb40edcdab412094d24fa39a314f3d3f52f5860e2509c32522eda30161fe70dfc9f90434d64bd976ede4f112d4f2d8e34d28fe48281663219d2ddac6"
       },
       {
-         "id":"did:iamx:d36d6f76-e463-4e48-a97e-908edaee6453#keys-1",
+         "id":"did:iamx:cardano:d36d6f76-e463-4e48-a97e-908edaee6453#keys-1",
          "type":"BIP32-Ed25519",
-         "controller":"did:iamx:d36d6f76-e463-4e48-a97e-908edaee6453",
+         "controller":"did:iamx:cardano:d36d6f76-e463-4e48-a97e-908edaee6453",
          "AdaAddress":"addr1qxjq9aj8hy29jkp9dxeepe88ksayl4kqw7qe8et33j6ucxmj2ldj3f0f2l3xrk8ep7hwvde3wa8l9w4wkp8wxfshta2sya6pxt"
       }
    ],
    "service":[
       {
-         "id":"did:iamx:d36d6f76-e463-4e48-a97e-908edaee6453#some-service",
+         "id":"did:iamx:cardano:d36d6f76-e463-4e48-a97e-908edaee6453#some-service",
          "type":"SomeServiceType",
          "serviceEndpoint":"Some URL"
       }
