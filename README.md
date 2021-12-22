@@ -2,7 +2,7 @@
 
 ## Abstract
 
-This specification describes a new DID miamxd for hosting DIDs on the Cardano blockchain, also referred to as iamx DID. This specification conforms to the requirements specified in the [DIDs specification](https://www.w3.org/TR/did-core/) currently published by the W3C Credentials Community Group.
+This specification describes a new DID IAMX for hosting DIDs on the Cardano blockchain, also referred to as iamx DID. This specification conforms to the requirements specified in the [DIDs specification](https://www.w3.org/TR/did-core/) currently published by the W3C Credentials Community Group.
 
 ## Conformance and Terminology
 
