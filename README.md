@@ -39,15 +39,18 @@ did:iamx:cardano:d36d6f76-e463-4e48-a97e-908edaee6453
 
 ```
 
-## 2.2 IAMX DID Registration and Deactivation
+# 2.2 IAMX DID document properties
 
-iamx DID can be automatically generated without registration for each Cardano address.
+An IAMX DID coument can have three distinct properties:
 
-When a IAMX DID is deactivated, all the related data including public keys, controllers, and other properties will be deleted and only a record of the IAMX DID identifier will remain on the Cardano blockchain.
+- **created**: poperty with the Date when the document was created.
+- **registered**: poperty with the Date when the document was registered.
+- **update**: poperty with the Date when the document was updated.
+- **deactivated**: : poperty with the Date when the DID was deactivated.
 
 A deactivated IAMX DID can no longer be used and cannot be reactivated for use.
 
-## 2.3 IAMX DID Document
+## 2.5 IAMX DID Document
 
 Each IAMX DID will have a corresponding IAMX DID Document, which is a set of data describing this IAMX DID.
 
@@ -69,7 +72,7 @@ Below is the basic structure of the IAMX DID Document:
 
 # 3. Context
 
-iamx DID Documents **MUST** include a `@context` property.
+IAMX DID Documents **MUST** include a `@context` property.
 
 The value of the @context property **MUST** be one or more URIs, where the value of the first URI **MUST** be [https://www.w3.org/ns/did/v1](https://www.w3.org/ns/did/v1). For more information, see [W3C DIDs specification](https://w3c.github.io/did-core/#production-0).
 
@@ -136,7 +139,7 @@ Below is a specific example of the `publicKey` property:
 
 # 3.4 Authentication
 
-iamx DID Documents **SHOULD** include an `authentication` property to specify a set of verification miamxds.
+IAMX DID Documents **SHOULD** include an `authentication` property to specify a set of verification miamxds.
 
 A IAMX DID subject could add the `authentication` property in its corresponding IAMX DID Document to denote that the subject has authorized a set of verification miamxds for the purpose of authentication.
 
@@ -159,7 +162,7 @@ Below is an example which refers to authentication keys in the two way specified
 }
 ```
 
-### Authorization and Delegation
+### 3.4.1 Authorization and Delegation
 
 In a IAMX DID Document, an **OPTIONAL** `controller` property is included to assign one or more delegates.
 
@@ -207,17 +210,40 @@ Below is a specific example:
 }
 ```
 
-# 3.6 Created
+# 3.6 DID methods
 
-iamx DID Documents do not include a `created` property as IAMX DID can be automatically generated for each Cardano address.
-
-# 3.7 Updated
-
-iamx DID Documents **SHOULD** include an `updated` property to specify a timestamp of the most recent change.
+All methodes **SHOULD** include a property denoting the supported method which is executed against the current IAMX DID document. The property needs to specify a timestamp of the most recent change.
 
 This part is derived directly from [W3C DIDs specification](https://www.w3.org/TR/did-core/#updated).
 
-Below is a specific example:
+## 3.6.1 Creation
+
+Creation of the DID including the private & public key is done **off chain** on a device controlled by the holder.
+Within the metadata of the DID document a **created** property is added.
+IAMX DID can be automatically created without registration for each Cardano address.
+
+```json
+{
+  "created": "2019-06-30T12:00:00Z"
+}
+```
+
+## 3.6.1 Registration
+
+Registrationn DID will write the initial IAMX DID document on the blockchain ledger.
+Within the metadata of the DID document a **registered** property is added.
+
+```json
+{
+  "registered": "2019-06-30T12:00:00Z"
+}
+```
+
+## 3.6.2 Update
+
+Updating of an IAMX DID will generate new private & public key's and is done on a device controlled by the user.
+Updating an IAMX DID Document is done by making a transaction which contains the old DID and writes a new DID as part of the transaction metadata into the blockchain ledger.
+Within the metadata of the DID document a **updated** property is added
 
 ```json
 {
@@ -225,45 +251,41 @@ Below is a specific example:
 }
 ```
 
-# 3.8 Deactivated
+## 3.6.3 Deactivation
 
-tbd
+Deactivating an IAMX DID Document is done by making a transaction which contains the old DID and writes a new DID as part of the transaction metadata into the blockchain ledger.
+Within the metadata of the DID document a **deactivation** property is added.
+
+```json
+{
+  "deactivated": "2019-06-30T12:00:00Z"
+}
+```
 
 # 4. Security Considerations
 
-The security depends on two key aspects:
+The securiuty of the IAMX modell is based on the security of the underlying blockchain ledger. Currently the only supported blockchain is Cardano.
 
-- Ledger security modell
-- Integration of IAMX into ledger modell.
-
-## 4.1. Ledger security modell
-
-IAMX decided to use Cardano as the initial Public ledger. The Cardano security is based on the Ouroboros protocoll. Ouroboros features mathematically verifiable security against attackers. Security properties for the protocol are comparable to those achieved by the bitcoin blockchain protocol. For more Details on the protocoll can be found in the whitepaper:  
+The Cardano security is based on the Ouroboros protocoll. Ouroboros features mathematically verifiable security against attackers. Security properties for the protocol are comparable to those achieved by the bitcoin blockchain protocol. For more Details on the protocoll can be found in the whitepaper:  
 https://eprint.iacr.org/2016/889.pdf
 
-## 4.2. IAMX application
+IAMX DIDs will be stored in an address controlled by the holder. This enshures that third partys can't modify, register, update or deactivate the a DID document controlled by the holder.
 
-DIDs will be written into the ledger either via a cardano node. Eiher via a cardano full node operated by the user or via an API Call to the IAMX Backend.
+## 4.1 Binding to Physical Identity
 
-The IAMX DID documents will never conatain any Private information in clear text. All information is hashed and encrypted based on PKS cryptography in order to avoid potential breach of private Data. The Data Sets a encrypetd at least by the Holder and the issuer.
+A IAMX DID document stored on the Blockchain will never contain any personal information. Ownership is proofen by:
 
-Even if the the private keys get compromised the all information the atakcer might obtain is the hash of the attributes.
+- Controll over the blockchain address.
+- Controll over of the private key which is related to the public key referened in the IAMX DID document.
 
-- As all Datasets will be Salted per User and per Credential.
-- There will never be an Dataset which conistst of only one Attributem which makes a rainbow attack even more unlikely.
+## 4.2 DID document changes
 
-In combination even if the cryptography fails or is compromised obtaining the data from the hash is practically impossible.
+As all IAMX DID methods are generated by a transaction which includes the previous DID the did documents changes can be monitored by observing the global state of the blockchain ledger.
 
 # 5. Privacy Considerations
 
-Data security depends on two key factors:
-
--
-- Data stored on the ledger
-
-in the achtitecture of the underlyig ledger used to store the data. The first implementation of the IAMX will happen on the cardano
-
-In a public EOSIO network, all communication is visible by watching the blockchain. In a private network both the peer-to-peer and the node to client communication should be encrypted to ensure data surveillance protection.
+The DID document will **NEVER** contin any personal Data.
+DIDs are pupose build, which means the holder will controll several DIDs for distinct Use Cases. This reduces the Potential for correlation based on usage.
 
 # 4. Appendix
 
