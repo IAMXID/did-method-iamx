@@ -8,7 +8,7 @@ This specification describes a new DID IAMX for hosting DIDs on the Cardano bloc
 
 This specification assumes a fair degree of understanding of [W3C DIDs specification](https://www.w3.org/TR/did-core/).
 
-The key words "MUST", "MUST NOT", "SHOULD", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [IETF RFC 2119](https://www.ietf.org/rfc/rfc2119).
+The keywords "MUST", "MUST NOT", "SHOULD", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [IETF RFC 2119](https://www.ietf.org/rfc/rfc2119).
 
 # 2. IAMX DID Syntax
 
@@ -16,9 +16,9 @@ IAMX DID is a URI conforming to [IETF RFC 3986](https://www.ietf.org/rfc/rfc3986
 
 IAMX DID is generated in conformity with [W3C DIDs specification](https://www.w3.org/TR/did-core/).
 
-IAMX LEDGER is a alphanumeric string
+IAMX LEDGER is an alphanumeric string
 
-IAMX UID (specific-idstring) is conform to [IETF RFC 4122](https://www.ietf.org/rfc/rfc4122.txt)
+IAMX UID (specific-idstring) is conforming to [IETF RFC 4122](https://www.ietf.org/rfc/rfc4122.txt)
 
 The ABNF grammar used to generate the IAMX DID identifier is as follows:
 
