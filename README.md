@@ -1,4 +1,4 @@
-# IAMX DID Specification Draft v0.1
+# IAMX DID Specification Draft v0.5
 
 ## Abstract
 
@@ -72,9 +72,9 @@ Below is the basic structure of the IAMX DID Document:
 
 # 3. Context
 
-IAMX DID Documents **MUST** include a `@context` property.
+IAMX DID document's **MUST** include a `@context` property.
 
-The value of the @context property **MUST** be one or more URIs, where the value of the first URI **MUST** be [https://www.w3.org/ns/did/v1](https://www.w3.org/ns/did/v1). For more information, see [W3C DIDs specification](https://w3c.github.io/did-core/#production-0).
+The value of the @context property **MUST** be one or more URIs, where the value of the first URI **MUST** be [https://www.w3.org/ns/did/v1](https://www.w3.org/ns/did/v1). For more information, see [W3C DID specification](https://w3c.github.io/did-core/#production-0).
 
 Below is an example in which the `@context` property has two values:
 
@@ -86,7 +86,7 @@ Below is an example in which the `@context` property has two values:
 
 ## 3.1 Identifiers
 
-iamx DID Documents **MUST** include an `id` property.
+IAMX DID document's **MUST** include an `id` property.
 
 The value of the `id` property denotes the IAMX DID subject that the IAMX DID Document is about.
 
@@ -102,7 +102,7 @@ The value of `id` **MUST** be a valid IAMX DID. A IAMX DID **MUST** have exactly
 
 A IAMX DID Document **MAY** include a `publicKey` property to specify a set of public keys linked to that IAMX DID.
 
-Public and private key pairs can be used for the identity management, authorization, and verification of IAMX DIDs. A IAMX DID can be linked to multiple public and private key pairs and one pair of public and private keys can also be used to manage multiple IAMX DIDs.
+Public and private key pairs can be used for the identity management, authorization, and verification of IAMX DID's. A IAMX DID can be linked to multiple public and private key pairs, and one pair of public and private keys can also be used to manage multiple IAMX DID's.
 
 Every public key object linked to the `publicKey` property **MUST** include the fields `id`, `type`, `controller` and specific public key properties, and **MAY** include other additional properties.
 
@@ -110,7 +110,7 @@ Each linked public key has its own identifier specified using the field `id`. Th
 
 Bound public keys can be revoked. Revoked public keys **MUST NOT** be reactivated, but can still possess the original `id`.
 
-The value of the `type` field represents the corresponding public key type. IAMX DID Documents support `BIP32-Ed25519`.
+The value of the `type` field represents the corresponding public key type. IAMX DID document's support `BIP32-Ed25519`.
 
 The value of the `controller` field which identifies the controller of the corresponding private key **MUST** be a valid IAMX DID, implying that the public key is controlled by this IAMX DID.
 
@@ -139,25 +139,25 @@ Below is a specific example of the `publicKey` property:
 
 # 3.4 Authentication
 
-IAMX DID Documents **SHOULD** include an `authentication` property to specify a set of verification miamxds.
+IAMX DID Documents **SHOULD** include an `authentication` property to specify a set of verification methods.
 
-A IAMX DID subject could add the `authentication` property in its corresponding IAMX DID Document to denote that the subject has authorized a set of verification miamxds for the purpose of authentication.
+A IAMX DID subject could add the `authentication` property in its corresponding IAMX DID Document to denote that the subject has authorized a set of verification methods for the purpose of authentication.
 
-The associated value **MUST** be an ordered set of one or more verification miamxds. Each verification miamxd in the `authentication` property **MAY** be embedded or referenced.
+The associated value **MUST** be an ordered set of one or more verification methods. Each verification methods in the `authentication` property **MAY** be embedded or referenced.
 
-Below is an example which refers to authentication keys in the two way specified above:
+Below is an example which refers to authentication keys in the two-way specified above:
 
 ```json
 {
   ...
   "authentication": [
-	"did:iamx:cardano:d36d6f76-e463-4e48-a97e-908edaee6453#keys-1",
-	{
-	  "id": "did:iamx:cardano:d36d6f76-e463-4e48-a97e-908edaee6453#keys-2",
-	  "type": "BIP32-Ed25519",
-	  "controller": "did:iamx:cardano:d36d6f76-e463-4e48-a97e-908edaee6453",
-	  "publicKeyHex": "03a835599850544b4c0a222d594be5d59cf298f5a3fd90bff1c8caa064523745f3"
-	}
+  "did:iamx:cardano:d36d6f76-e463-4e48-a97e-908edaee6453#keys-1",
+  {
+    "id": "did:iamx:cardano:d36d6f76-e463-4e48-a97e-908edaee6453#keys-2",
+    "type": "BIP32-Ed25519",
+    "controller": "did:iamx:cardano:d36d6f76-e463-4e48-a97e-908edaee6453",
+    "publicKeyHex": "03a835599850544b4c0a222d594be5d59cf298f5a3fd90bff1c8caa064523745f3"
+  }
   ],
 }
 ```
@@ -166,9 +166,9 @@ Below is an example which refers to authentication keys in the two way specified
 
 In a IAMX DID Document, an **OPTIONAL** `controller` property is included to assign one or more delegates.
 
-A IAMX DID can be delegated to and controlled by one or more distinct IAMX DIDs.
+A IAMX DID can be delegated to and controlled by one or more distinct IAMX DID's.
 
-A IAMX DID delegate has the necessary authorization to insert a new verification miamxd into the `authentication` property of the delegated IAMX DID.
+A IAMX DID delegate has the necessary authorization to insert a new verification methods into the `authentication` property of the delegated IAMX DID.
 
 It is worth noting that a IAMX DID Document can assign `controller` without defining the value of `authentication`.
 
@@ -181,19 +181,19 @@ Below is a specific example representing that either `did:iamx:cardano:5Ee76017b
   ...
   "id": "did:iamx:cardano:d36d6f76-e463-4e48-a97e-908edaee6453",
   "controller": [
-	  "did:iamx:cardano:5Ee76017be7F983a520a778B413758A9DB49cBe9",
-	  "did:iamx:cardano:9861eE37Ede3dCab070DF227155D86A7438d8Ed2"
+    "did:iamx:cardano:5Ee76017be7F983a520a778B413758A9DB49cBe9",
+    "did:iamx:cardano:9861eE37Ede3dCab070DF227155D86A7438d8Ed2"
   ],
 }
 ```
 
 # 3.5 Service Information
 
-iamx DID Documents use an **OPTIONAL** `service` property to specify the service property.
+IAMX DID document's use an **OPTIONAL** `service` property to specify the service property.
 
-iamx DID allows entities to add services and specify the relevant information of a service that is related to the particular IAMX DID, including fields such as the type of service and service endpoint.
+IAMX DID's allow entities to add services and specify the relevant information of a service that is related to the particular IAMX DID, including fields such as the type of service and service endpoint.
 
-This part is derived directly from [W3C DIDs specification](https://www.w3.org/TR/did-core/#services).
+This part is derived directly from [W3C DID specification](https://www.w3.org/TR/did-core/#services).
 
 Below is a specific example:
 
@@ -201,25 +201,25 @@ Below is a specific example:
 {
   ...
   "service": [
-	{
-	  "id": "did:iamx:cardano:d36d6f76-e463-4e48-a97e-908edaee6453#some-service",
-	  "type": "SomeServiceType",
-	  "serviceEndpoint": "Some URL"
-	}
+  {
+    "id": "did:iamx:cardano:d36d6f76-e463-4e48-a97e-908edaee6453#some-service",
+    "type": "SomeServiceType",
+    "serviceEndpoint": "Some URL"
+  }
   ]
 }
 ```
 
 # 3.6 DID methods
 
-All methodes **SHOULD** include a property denoting the supported method which is executed against the current IAMX DID document. The property needs to specify a timestamp of the most recent change.
+All methods **SHOULD** include a property denoting the supported method which is executed against the current IAMX DID document. The property needs to specify a timestamp of the most recent change.
 
-This part is derived directly from [W3C DIDs specification](https://www.w3.org/TR/did-core/#updated).
+This part is derived directly from [W3C DID specification](https://www.w3.org/TR/did-core/#updated).
 
 ## 3.6.1 Creation
 
 Creation of the DID including the private & public key is done **off chain** on a device controlled by the holder.
-Within the metadata of the DID document a **created** property is added.
+Within the metadata of the DID document, a **created** property is added.
 IAMX DID can be automatically created without registration for each Cardano address.
 
 ```json
@@ -230,8 +230,8 @@ IAMX DID can be automatically created without registration for each Cardano addr
 
 ## 3.6.1 Registration
 
-Registrationn DID will write the initial IAMX DID document on the blockchain ledger.
-Within the metadata of the DID document a **registered** property is added.
+Registration DID will write the initial IAMX DID document on the blockchain ledger.
+Within the metadata of the DID document, a **registered** property is added.
 
 ```json
 {
@@ -243,7 +243,7 @@ Within the metadata of the DID document a **registered** property is added.
 
 Updating of an IAMX DID will generate new private & public key's and is done on a device controlled by the user.
 Updating an IAMX DID Document is done by making a transaction which contains the old DID and writes a new DID as part of the transaction metadata into the blockchain ledger.
-Within the metadata of the DID document a **updated** property is added
+Within the metadata of the DID document, a **updated** property is added
 
 ```json
 {
@@ -254,7 +254,7 @@ Within the metadata of the DID document a **updated** property is added
 ## 3.6.3 Deactivation
 
 Deactivating an IAMX DID Document is done by making a transaction which contains the old DID and writes a new DID as part of the transaction metadata into the blockchain ledger.
-Within the metadata of the DID document a **deactivation** property is added.
+Within the metadata of the DID document, a **deactivation** property is added.
 
 ```json
 {
@@ -264,28 +264,28 @@ Within the metadata of the DID document a **deactivation** property is added.
 
 # 4. Security Considerations
 
-The securiuty of the IAMX modell is based on the security of the underlying blockchain ledger. Currently the only supported blockchain is Cardano.
+The security of the IAMX model is based on the security of the underlying blockchain ledger. Currently, the only supported blockchain is Cardano.
 
-The Cardano security is based on the Ouroboros protocoll. Ouroboros features mathematically verifiable security against attackers. Security properties for the protocol are comparable to those achieved by the bitcoin blockchain protocol. For more Details on the protocoll can be found in the whitepaper:  
+The Cardano security is based on the Ouroboros protocol. Ouroboros features mathematically verifiable security against attackers. Security properties for the protocol are comparable to those achieved by the bitcoin blockchain protocol. For more details on the protocol can be found in the white paper:  
 https://eprint.iacr.org/2016/889.pdf
 
-IAMX DIDs will be stored in an address controlled by the holder. This enshures that third partys can't modify, register, update or deactivate the a DID document controlled by the holder.
+IAMX DID's will be stored in an address controlled by the holder. This ensures that third parties can't modify, register, update or deactivate the DID document controlled by the holder.
 
 ## 4.1 Binding to Physical Identity
 
-A IAMX DID document stored on the Blockchain will never contain any personal information. Ownership is proofen by:
+A IAMX DID document stored on the Blockchain will never contain any personal information. Ownership is proofed by:
 
-- Controll over the blockchain address.
-- Controll over of the private key which is related to the public key referened in the IAMX DID document.
+- Control over the blockchain address.
+- Control over of the private key which is related to the public key referenced in the IAMX DID document.
 
 ## 4.2 DID document changes
 
-As all IAMX DID methods are generated by a transaction which includes the previous DID the did documents changes can be monitored by observing the global state of the blockchain ledger.
+As all IAMX DID methods are generated by a transaction which includes the previous DID, the did document changes can be monitored by observing the global state of the blockchain ledger.
 
 # 5. Privacy Considerations
 
-The DID document will **NEVER** contin any personal Data.
-DIDs are pupose build, which means the holder will controll several DIDs for distinct Use Cases. This reduces the Potential for correlation based on usage.
+The DID document will **NEVER** contain any personal Data.
+DID's are purpose build, which means the holder will control several DID's for distinct Use Cases. This reduces the Potential for correlation based on usage.
 
 # 4. Appendix
 
@@ -349,11 +349,11 @@ Decentralized Identifiers (DIDs) v1.0. W3C. Jul 2020. Working Draft. URL: https:
 
 [RFC2119]
 
-Key words for use in RFCs to Indicate Requirement Levels. S. Bradner. IETF. March 1997. Best Current Practice. URL: https://tools.ietf.org/html/rfc2119
+Keywords for use in RFCs to Indicate Requirement Levels. S. Bradner. IETF. March 1997. Best Current Practice. URL: https://tools.ietf.org/html/rfc2119
 
 [RFC4122]
 
-A Universally Unique IDentifier (UUID) URN Namespace P. Leach July 2005 URL: https://www.ietf.org/rfc/rfc4122.txt
+A Universally Unique Identifier (UUID) URN Namespace P. Leach July 2005 URL: https://www.ietf.org/rfc/rfc4122.txt
 
 [RFC3986]
 
