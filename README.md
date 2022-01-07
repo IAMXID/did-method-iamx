@@ -225,6 +225,10 @@ Below is a specific example:
 }
 ```
 
+# 3.8 Deactivated
+
+tbd
+
 # 4. Security Considerations
 
 The security depends on two key aspects:
