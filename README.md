@@ -50,7 +50,7 @@ An IAMX DID coument can have three distinct properties:
 
 A deactivated IAMX DID can no longer be used and cannot be reactivated for use.
 
-## 2.5 IAMX DID Document
+## 2.3 IAMX DID Document
 
 Each IAMX DID will have a corresponding IAMX DID Document, which is a set of data describing this IAMX DID.
 
@@ -70,7 +70,7 @@ Below is the basic structure of the IAMX DID Document:
 }
 ```
 
-# 3. Context
+# 2.4 Context
 
 IAMX DID document's **MUST** include a `@context` property.
 
@@ -84,7 +84,7 @@ Below is an example in which the `@context` property has two values:
 }
 ```
 
-## 3.1 Identifiers
+# 3 Identifiers
 
 IAMX DID document's **MUST** include an `id` property.
 
@@ -98,15 +98,15 @@ The value of `id` **MUST** be a valid IAMX DID. A IAMX DID **MUST** have exactly
 }
 ```
 
-# 3.2 Public Keys
+## 3.1 Verification Methods [ToDo: verificationMethod ??]
 
-A IAMX DID Document **MAY** include a `publicKey` property to specify a set of public keys linked to that IAMX DID.
+A IAMX DID Document **MAY** include a `verificationMethod` property to specify a set of public keys linked to that IAMX DID.
 
 Public and private key pairs can be used for the identity management, authorization, and verification of IAMX DID's. A IAMX DID can be linked to multiple public and private key pairs, and one pair of public and private keys can also be used to manage multiple IAMX DID's.
 
-Every public key object linked to the `publicKey` property **MUST** include the fields `id`, `type`, `controller` and specific public key properties, and **MAY** include other additional properties.
+Every public key object linked to the `verificationMethod` property **MUST** include the fields `id`, `type`, `controller` and specific public key properties, and **MAY** include other additional properties.
 
-Each linked public key has its own identifier specified using the field `id`. The value of `publicKey` **MUST NOT** contain multiple entries with the same `id`.
+Each linked public key has its own identifier specified using the field `id`. The value of `verificationMethod` **MUST NOT** contain multiple entries with the same `id`.
 
 Bound public keys can be revoked. Revoked public keys **MUST NOT** be reactivated, but can still possess the original `id`.
 
@@ -137,7 +137,7 @@ Below is a specific example of the `publicKey` property:
 }
 ```
 
-# 3.4 Authentication
+## 3.2 Authentication
 
 IAMX DID Documents **SHOULD** include an `authentication` property to specify a set of verification methods.
 
@@ -162,7 +162,7 @@ Below is an example which refers to authentication keys in the two-way specified
 }
 ```
 
-### 3.4.1 Authorization and Delegation
+## 3.3 Authorization and Delegation
 
 In a IAMX DID Document, an **OPTIONAL** `controller` property is included to assign one or more delegates.
 
@@ -187,7 +187,7 @@ Below is a specific example representing that either `did:iamx:cardano:5Ee76017b
 }
 ```
 
-# 3.5 Service Information
+## 3.4 Service Information
 
 IAMX DID document's use an **OPTIONAL** `service` property to specify the service property.
 
@@ -210,13 +210,13 @@ Below is a specific example:
 }
 ```
 
-# 3.6 DID methods
+## 4 DID operations
 
 All methods **SHOULD** include a property denoting the supported method which is executed against the current IAMX DID document. The property needs to specify a timestamp of the most recent change.
 
 This part is derived directly from [W3C DID specification](https://www.w3.org/TR/did-core/#updated).
 
-## 3.6.1 Creation
+## 4.1 Creation
 
 Creation of the DID including the private & public key is done **off chain** on a device controlled by the holder.
 Within the metadata of the DID document, a **created** property is added.
@@ -228,9 +228,7 @@ IAMX DID can be automatically created without registration for each Cardano addr
 }
 ```
 
-## 3.6.1 Registration
-
-Registration DID will write the initial IAMX DID document on the blockchain ledger.
+As part of the **creation** operation, the initial IAMX DID document will be written to blockchain ledger in order to register the DID.
 Within the metadata of the DID document, a **registered** property is added.
 
 ```json
@@ -239,7 +237,7 @@ Within the metadata of the DID document, a **registered** property is added.
 }
 ```
 
-## 3.6.2 Update
+## 4.3 Update
 
 Updating of an IAMX DID will generate new private & public key's and is done on a device controlled by the user.
 Updating an IAMX DID Document is done by making a transaction which contains the old DID and writes a new DID as part of the transaction metadata into the blockchain ledger.
@@ -251,7 +249,7 @@ Within the metadata of the DID document, a **updated** property is added
 }
 ```
 
-## 3.6.3 Deactivation
+## 4.5 Deactivation
 
 Deactivating an IAMX DID Document is done by making a transaction which contains the old DID and writes a new DID as part of the transaction metadata into the blockchain ledger.
 Within the metadata of the DID document, a **deactivation** property is added.
@@ -262,7 +260,7 @@ Within the metadata of the DID document, a **deactivation** property is added.
 }
 ```
 
-# 4. Security Considerations
+# 5. Security Considerations
 
 The security of the IAMX model is based on the security of the underlying blockchain ledger. Currently, the only supported blockchain is Cardano.
 
@@ -271,14 +269,14 @@ https://eprint.iacr.org/2016/889.pdf
 
 IAMX DID's will be stored in an address controlled by the holder. This ensures that third parties can't modify, register, update or deactivate the DID document controlled by the holder.
 
-## 4.1 Binding to Physical Identity
+## 5.1 Binding to Physical Identity
 
 A IAMX DID document stored on the Blockchain will never contain any personal information. Ownership is proofed by:
 
 - Control over the blockchain address.
 - Control over of the private key which is related to the public key referenced in the IAMX DID document.
 
-## 4.2 DID document changes
+## 5.2 DID document changes
 
 As all IAMX DID methods are generated by a transaction which includes the previous DID, the did document changes can be monitored by observing the global state of the blockchain ledger.
 
