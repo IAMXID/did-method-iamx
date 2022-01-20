@@ -39,7 +39,7 @@ did:iamx:cardano:d36d6f76-e463-4e48-a97e-908edaee6453
 
 ```
 
-# 2.2. IAMX DID document properties
+## 2.2. IAMX DID document properties
 
 An IAMX DID coument can have three distinct properties:
 
@@ -70,7 +70,7 @@ Below is the basic structure of the IAMX DID Document:
 }
 ```
 
-# 2.4. Context
+## 2.4. Context
 
 IAMX DID document's **MUST** include a `@context` property.
 
