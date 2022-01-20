@@ -98,7 +98,7 @@ The value of `id` **MUST** be a valid IAMX DID. A IAMX DID **MUST** have exactly
 }
 ```
 
-## 3.1 Verification Methods [ToDo: verificationMethod ??]
+## 3.1 Verification Methods
 
 An IAMX DID Document **MAY** includes a `verificationMethod` property to specify a set of public keys linked to that IAMX DID.
 
@@ -116,16 +116,16 @@ The value of the `controller` field which identifies the controller of the corre
 
 The encoding formats that IAMX DID Documents support include `publicKeyHex` and `AdaAddress`. Public keys of all types **MUST** be expressed in these two formats.
 
-Below is a specific example of the `publicKey` property:
+Below is a specific example of the `verificationMethod` property:
 
 ```json
 {
-  "publicKey": [
+  "verificationMethod": [
     {
       "id": "did:iamx:cardano:d36d6f76-e463-4e48-a97e-908edaee6453#keys-1",
       "type": "BIP32-Ed25519",
       "controller": "did:iamx:cardano:d36d6f76-e463-4e48-a97e-908edaee6453",
-      "publicKeyHex": "0xfbf38de9fb40edcdab412094d24fa39a314f3d3f52f5860e2509c32522eda30161fe70dfc9f90434d64bd976ede4f112d4f2d8e34d28fe48281663219d2ddac6"
+      "publicKeyMultibase": "0xfbf38de9fb40edcdab412094d24fa39a314f3d3f52f5860e2509c32522eda30161fe70dfc9f90434d64bd976ede4f112d4f2d8e34d28fe48281663219d2ddac6"
     },
     {
       "id": "did:iamx:cardano:d36d6f76-e463-4e48-a97e-908edaee6453#keys-1",
@@ -156,7 +156,7 @@ Below is an example which refers to authentication keys in the two-way specified
     "id": "did:iamx:cardano:d36d6f76-e463-4e48-a97e-908edaee6453#keys-2",
     "type": "BIP32-Ed25519",
     "controller": "did:iamx:cardano:d36d6f76-e463-4e48-a97e-908edaee6453",
-    "publicKeyHex": "03a835599850544b4c0a222d594be5d59cf298f5a3fd90bff1c8caa064523745f3"
+    "publicKeyMultibase": "03a835599850544b4c0a222d594be5d59cf298f5a3fd90bff1c8caa064523745f3"
   }
   ],
 }
@@ -216,9 +216,9 @@ All methods **SHOULD** include a property denoting the supported method which is
 
 This part is derived directly from [W3C DID specification](https://www.w3.org/TR/did-core/#updated).
 
-## 4.1. Creation
+## 4.1. Create
 
-Creation of the DID including the private & public key is done **off chain** on a device controlled by the holder.
+Creation of the DID including the private & public key pair is done **off chain** on a device controlled by the holder.
 Within the metadata of the DID document, a **created** property is added.
 IAMX DID can be automatically created without registration for each Cardano address.
 
@@ -306,10 +306,10 @@ A simple example of a IAMX DID Document is as follows:
         "did:iamx:cardano:5Ee76017be7F983a520a778B413758A9DB49cBe9",
         "did:iamx:cardano:9861eE37Ede3dCab070DF227155D86A7438d8Ed2"
       ],
-      "publicKeyHex": "03a835599850544b4c0a222d594be5d59cf298f5a3fd90bff1c8caa064523745f3"
+      "publicKeyMultibase": "03a835599850544b4c0a222d594be5d59cf298f5a3fd90bff1c8caa064523745f3"
     }
   ],
-  "publicKey": [
+  "verificationMethod": [
     {
       "id": "did:iamx:cardano:d36d6f76-e463-4e48-a97e-908edaee6453#keys-1",
       "type": "BIP32-Ed25519",
