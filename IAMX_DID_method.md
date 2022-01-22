@@ -273,8 +273,8 @@ The DID Document will be written to the Cardano Blockchain as part of the transa
 ## 4.2. Read
 
 1. The DID network identifier is "mainnet".
-2. A lookup in the Caradno Ledger Database will reveal the DID Document by the DID ID.
-3. IAXM provides a backened which provides a method called `didVerify` which will lookup the DID Document in a copy of the Cradano Ledger on the connected cardano node.
+2. A lookup in the Cardano Ledger Database will reveal the DID Document by the DID ID.
+3. IAMX provides a backend which provides a method called `didVerify` which will look up the DID Document in a copy of the Cardano Ledger on the connected Cardano node.
 4. To make sure the result returned by invoking the `didVerify` function is trustworthy, the client could ask a sufficient number of nodes and compare each node's return value.
 
 ## 4.3. Update
