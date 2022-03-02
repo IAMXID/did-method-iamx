@@ -1,0 +1,1 @@
+NFT IAMX_NFT_identity_method
