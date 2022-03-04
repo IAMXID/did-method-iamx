@@ -23,7 +23,7 @@ Contact: <contact@imax.id>
 
 # Abstract
 
-This specification describes a new DID method called IAMX for hosting DIDs on the Cardano blockchain, also referred to as IAMX DID. This specification conforms to the requirements specified in the [DIDs specification](https://www.w3.org/TR/did-core/) currently published by the W3C Credentials Community Group.
+This specification describes a new DID method called IAMX for storging DIDs using blockchains as public storage, also referred to as IAMX DID. This specification conforms to the requirements specified in the [DIDs specification](https://www.w3.org/TR/did-core/) currently published by the W3C Credentials Community Group.
 
 # Contents
 
