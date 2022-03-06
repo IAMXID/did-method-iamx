@@ -1,4 +1,4 @@
-# NFT IAMX_NFT_identity_method v1.0
+# NFT IAMX_NFT_identity_method v1.0.0
 
 # Status of This Document
 
