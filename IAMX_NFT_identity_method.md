@@ -51,7 +51,6 @@ Core of this method is a new key called **identity** to be added to the body of 
             "<other_properties>": "<other_properties>"
           }
         ],
-        // Refernces the Document to verify the NFT Identity.
         "identity": {
           "@context": [
             "https://github.com/IAMXID/did-method-iamx/blob/main/IAMX_NFT_identity_method.md"
