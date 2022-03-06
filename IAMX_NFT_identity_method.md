@@ -55,6 +55,7 @@ Core of this method is a new key called **identity** to be added to the body of 
           "@context": [
             "https://github.com/IAMXID/did-method-iamx/blob/main/IAMX_NFT_identity_method.md"
           ],
+          "version": "1.0.0",
           "storageLocation": {
             "url": "depending on Ledger contains one of the following informations: fingerprint | url | tokenID",
             "type": "<transactionFingerprint | url | contract> // type of location"
