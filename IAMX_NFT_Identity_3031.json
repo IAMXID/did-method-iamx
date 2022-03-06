@@ -5,7 +5,7 @@
         "payload": {
           "date": "Sun, 06 Mar 2022 22:41:17 GMT",
           "policyID": "xxyyzz",
-          "version": "1.0.0",
+          "version": "1.0.0 in SemVer",
           "description": "Teddy Troops NFT Identity by IAMX.ID",
           "accounts": {
             "twitter": { "handle": "<handle>", "email": "<account email>" },
