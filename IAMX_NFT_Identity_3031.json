@@ -1,0 +1,56 @@
+{
+  "3031": {
+    "<policy_id>": {
+      "identityCredential": {
+        "payload": {
+          "date": "Sun, 06 Mar 2022 22:41:17 GMT",
+          "policyID": "xxyyzz",
+          "version": "1.0.0",
+          "description": "Teddy Troops NFT Identity by IAMX.ID",
+          "accounts": {
+            "twitter": { "handle": "<handle>", "email": "<account email>" },
+            "discord": { "handle": "<handle>", "email": "<account email>" },
+            "instagram": { "handle": "<handle>", "email": "<account email>" },
+            "website": "<url to website>"
+          }
+        },
+        "@context": "https://github.com/IAMXID/did-method-iamx",
+        "signatures": [
+          {
+            "signature": "<payload => signed by Issuer rsa-sha256 in base58 encoding>",
+            "signatureType": "rsa-sha256",
+            "signatureEncoding": "base58",
+            "DID": "did:iamx:cardanozggW2SuC7Phxth3SAjhtz7YuNfrcDhoRTz5WrSZ2xh38BTwf",
+            "description": "Issuer",
+            "storageLocation": {
+              "uri": "whereDIDIsSaved",
+              "type": "transactionFingerprint"
+            }
+          },
+          {
+            "signature": "<signature of Issuer => signed by Creator rsa-sha256 in base58 encoding>",
+            "signatureType": "rsa-sha256",
+            "signatureEncoding": "base58",
+            "DID": "did:iamx:cardanozggW2SuC7Phxth3SAjhtz7YuNfrcDhoRTz5WrSZ2xh38BTwf",
+            "description": "Creator",
+            "storageLocation": {
+              "uri": "whereIssuerDidIsSaved",
+              "type": "transactionFingerprint"
+            }
+          },
+          {
+            "signature": "<signature of Creator => signed by Creator rsa-sha256 in base58 encoding>",
+            "signatureType": "rsa-sha256",
+            "signatureEncoding": "base58",
+            "DID": "did:iamx:cardanozggW2SuC7Phxth3SAjhtz7YuNfrcDhoRTz5WrSZ2xh38BTwf",
+            "description": "IAMX_test",
+            "storageLocation": {
+              "uri": "whereIAMXDidIsSaved",
+              "type": "transactionFingerprint"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
