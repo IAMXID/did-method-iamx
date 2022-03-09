@@ -2,9 +2,9 @@
   "3031": {
     "<policy_id>": {
       "identityCredential": {
-        "payload": {
-          "date": "Sun, 06 Mar 2022 22:41:17 GMT",
-          "policyID": "xxyyzz",
+        "credentialSubject": {
+          "issuanceDate": "2010-01-01T19:23:24Z",
+          "id": "<xxyyzz> policyID",
           "version": "1.0.0 in SemVer",
           "description": "Teddy Troops NFT Identity by IAMX.ID",
           "accounts": {
