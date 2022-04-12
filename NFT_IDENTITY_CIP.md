@@ -34,7 +34,7 @@ The proof of authorship is based an a set of attributes as Social Media Accounts
 To enbale verification on ore proofs can be added to the Credential Document. The Proofs are added to the proof array and follow this pattern:
 
 ```JSON
-proof: [
+"proof": [
 {
     "type": "JsonWebSignature2020",
     "created": "2022-04-12T06:50:25.495Z",
@@ -43,7 +43,8 @@ proof: [
     "proofValue": "eyJhbGciOiJFUzUxMiIsImNydiI6IlAtNTIxIiwidHlwIjoiSldTIn0.eyJkYXRlIjoiVHVlLCAxMiBBcHIgMjAyMiAwNjo1MDoyNSBHTVQiLCJwb2xpY3lJRCI6Inh4eXl6eiIsInZlcnNpb24iOiIxLjAuMCIsImRlc2NyaXB0aW9uIjoiVGVkZHkgVHJvb3BzIE5GVCBJZGVudGl0eSBieSBJQU1YLklEIiwiYWNjb3VudHMiOnsidHdpdHRlciI6eyJoYW5kbGUiOiI8aGFuZGxlPiIsImVtYWlsIjoiPGFjY291bnQgZW1haWw-In0sImRpc2NvcmQiOnsiaGFuZGxlIjoiPGhhbmRsZT4iLCJlbWFpbCI6IjxhY2NvdW50IGVtYWlsPiJ9LCJpbnN0YWdyYW0iOnsiaGFuZGxlIjoiPGhhbmRsZT4iLCJlbWFpbCI6IjxhY2NvdW50IGVtYWlsPiJ9LCJ3ZWJzaXRlIjoiPHVybCB0byB3ZWJzaXRlPiJ9fQ.ANxJIU2-vqEF4Mked6iHt5yFnx9O4Jv5RVVX0Cz9sXKHktTX-bezl4NykVOeqRsgPtWMzA9WcDb-UGESRvJtSfyAATu6fbZhS8gElPs47Q6N3rWKIkAP6VLbw1gryLS0qZCK1Bz5wNpnx8IMK5GFgbca2c39i4gGWTHsI6xUnW9uJ4n5"
 
 },
-{...}
+{"... proof#2"},
+{"... proof#3 ..."},
 ]
 
 ```
