@@ -51,8 +51,7 @@ To enbale verification on ore proofs can be added to the Credential Document. Th
 
 The type of the Verification is **JsonWebSignature2020**.
 
-If more then one proof exists, every new proof is a signature of the first proof value of the previous proof.
-Herby the proofs the different proofs add are linked via consecutive signatures and can be evaluated in that order.
+If more then one proof exists, every new proof is a signature of the previous proof. Herby the different proofs are linked via consecutive signatures and can be verified in that order.
 
 The **verificationMethod** is a DID.
 [Example NFT Identity Credential](IAMX_NFT_Identity_Credential_example.json)
