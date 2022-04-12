@@ -63,9 +63,10 @@ The Identity is linked to each NFT via an attribute set called **nftIdentity**.
 
 ```JSON
         "nftIdentity": {
-          "uri": "<asset fingerprint of NFT identity>",
+            "uri": "<asset fingerprint of NFT identity>",
           "sig": "NFT Policy ID signed per project DID"
         },
 ```
 
-The signature is based on DID from the issuer DID of the Identity Credential.
+The signature is based on the DID of the issuer DID in the Identity Credential.
+[Example of NFT with linked Identity](NFT_with_linked_Identity_example.json)
