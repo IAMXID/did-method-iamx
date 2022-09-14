@@ -131,7 +131,7 @@ The value of `id` **MUST** be a valid IAMX DID. A IAMX DID **MUST** have exactly
 
 ## 3.1. Verification Methods
 
-An IAMX DID Document **MAY** includes a `verificationMethod` property to specify a set of public keys linked to that IAMX DID.
+An IAMX DID Document **MAY** include a `verificationMethod` property to specify a set of public keys linked to that IAMX DID.
 
 Public and private key pairs can be used for the identity management, authorization, and verification of IAMX DID's. A IAMX DID can be linked to multiple public and private key pairs, and one pair of public and private keys can also be used to manage multiple IAMX DID's.
 
@@ -329,7 +329,7 @@ In the public Cardano network, all transactions are visible by watching the bloc
 ## 6.2. Stored data compromise
 
 The DID Document data and history is stored in the blockchain state.
-The Blockchain state is secured by the consensus method of Ouroboros. For Details see the cardano white paper:  
+The Blockchain state is secured by the consensus method of Ouroboros. For details see the cardano white paper:  
 https://eprint.iacr.org/2016/889.pdf
 
 ## 6.4. Identification
@@ -338,15 +338,15 @@ If personal information is added to the blockchain, potentially a viable credent
 
 For this reason, it is very strongly suggested that personal information is not added to the blockchain.
 
-Therefore IAMX DID document will **NEVER** contain any personal Data.
+Therefore, IAMX DID document will **NEVER** contain any personal Data.
 
 ## 6.3. Separation of concerns
 
-DID's are purpose build, which means the holder will control several DID's for distinct Use Cases.
+DID's beeing purpose build, which means the holder will control several DID's for distinct Use Cases.
 
 ## 6.4. Traceability
 
-To avoid traceability of a verifiable presentation, a new did document **can** be generated of during the generation of each verifiable presentation. For each new DID document, a new privat-public key pair can be generated. This avoids correlation based tracing of the user.
+To avoid traceability of a verifiable presentation, a new did document **can** be generated of during the generation of each verifiable presentation. For each new DID document, a new privat-public key pair can be generated. This avoids correlation-based tracing of the user.
 
 ## 6.5. Misattribution
 
